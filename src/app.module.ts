@@ -19,6 +19,8 @@ import { UsersRolesModule } from './users-roles/users-roles.module';
 import { PermissionsModule } from './permissions/permissions.module';
 import { PermissionGuard } from './auth/guards/permission.guard';
 import { FilesModule } from './files/files.module';
+import { StudentsModule } from './students/students.module';
+import { TeachersModule } from './teachers/teachers.module';
 
 const globalFilters = [
   ConflictExceptionFilter,
@@ -47,6 +49,8 @@ const globalFilters = [
     UsersRolesModule,
     PermissionsModule,
     FilesModule,
+    StudentsModule,
+    TeachersModule,
   ],
   providers: [
     {
