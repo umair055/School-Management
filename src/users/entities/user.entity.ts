@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   Index,
   OneToMany,
+  OneToOne,
 } from 'typeorm';
 import { UserStatus } from '../enums/status.enum';
 import { PasswordTransformer, TrimLowerTransformer } from '../../shared/transformers';
@@ -13,6 +14,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { TrimTransformer } from '../../shared/transformers/trim.transformer';
 import { UserGender } from '../enums/gender.enum';
 import { UserRoleEntity } from '../../users-roles/entities/users-role.entity';
+import { TeacherEntity } from 'src/teachers/entities/teacher.entity';
 
 @Entity('users')
 @Index(['email', 'status', 'id'])
@@ -77,6 +79,9 @@ export class UserEntity {
 
   @OneToMany(() => UserRoleEntity, (userRole) => userRole.user)
   userRoles: UserRoleEntity[];
+
+  @OneToOne(() => TeacherEntity, (teacher) => teacher.user)
+  teacher: TeacherEntity;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
