@@ -1,8 +1,11 @@
+import { UserEntity } from 'src/users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   Generated,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -29,4 +32,11 @@ export class StudentEntity {
 
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt: Date;
+
+  @OneToOne(() => UserEntity, (user) => user.student)
+  @JoinColumn()
+  user: UserEntity;
+
+  @Column()
+  userId: string;
 }

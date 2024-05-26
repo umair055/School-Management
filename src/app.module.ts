@@ -21,6 +21,8 @@ import { PermissionGuard } from './auth/guards/permission.guard';
 import { FilesModule } from './files/files.module';
 import { StudentsModule } from './students/students.module';
 import { TeachersModule } from './teachers/teachers.module';
+import { PaymentTypeModule } from './payment-type/payment-type.module';
+import { PaymentsModule } from './payments/payments.module';
 
 const globalFilters = [
   ConflictExceptionFilter,
@@ -51,6 +53,8 @@ const globalFilters = [
     FilesModule,
     StudentsModule,
     TeachersModule,
+    PaymentTypeModule,
+    PaymentsModule,
   ],
   providers: [
     {

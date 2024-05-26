@@ -15,6 +15,8 @@ import { TrimTransformer } from '../../shared/transformers/trim.transformer';
 import { UserGender } from '../enums/gender.enum';
 import { UserRoleEntity } from '../../users-roles/entities/users-role.entity';
 import { TeacherEntity } from 'src/teachers/entities/teacher.entity';
+import { StudentEntity } from 'src/students/entities/student.entity';
+import { PaymentEntity } from 'src/payments/entities/payment.entity';
 
 @Entity('users')
 @Index(['email', 'status', 'id'])
@@ -80,8 +82,14 @@ export class UserEntity {
   @OneToMany(() => UserRoleEntity, (userRole) => userRole.user)
   userRoles: UserRoleEntity[];
 
+  @OneToMany(() => PaymentEntity, (payment) => payment.user)
+  payment: PaymentEntity[];
+
   @OneToOne(() => TeacherEntity, (teacher) => teacher.user)
   teacher: TeacherEntity;
+
+  @OneToOne(() => StudentEntity, (student) => student.user)
+  student: StudentEntity;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
